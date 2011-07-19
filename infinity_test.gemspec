@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{infinity_test}
-  s.version = "1.0.3"
+  s.version = "1.0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Tomas D'Stefano"]
-  s.date = %q{2011-06-07}
+  s.authors = ["Vinicius Eduardo"]
+  s.date = %q{2011-07-19}
   s.description = %q{Infinity Test is a continuous testing library and a flexible alternative to Autotest, using Watchr library with RSpec, Test::Unit or Bacon with RVM funcionality, giving the possibility to test with all Rubies that you have in your RVM configuration.}
-  s.email = %q{tomasdestefi@gmail.com}
+  s.email = %q{viniciuseduardo.rj@gmail.com}
   s.executables = ["infinity_test"]
   s.extra_rdoc_files = [
     "LICENSE.txt"
@@ -56,6 +56,9 @@ Gem::Specification.new do |s|
     "images/simpson/failure.gif",
     "images/simpson/pending.jpg",
     "images/simpson/sucess.jpg",
+    "images/simpson/failure.wav",
+    "images/simpson/pending.wav",
+    "images/simpson/sucess.wav",    
     "images/street_fighter/failure.gif",
     "images/street_fighter/pending.gif",
     "images/street_fighter/sucess.jpg",
@@ -144,7 +147,7 @@ Gem::Specification.new do |s|
     "spec/infinity_test_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/tomas-stefano/infinity_test}
+  s.homepage = %q{https://github.com/viniciuseduardo/infinity_test}
   s.post_install_message = %q{
   --------------------------------------------------------------------------------
                   T O    I N F I N I T Y   A N D   B E Y O N D !!!
@@ -170,30 +173,30 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<watchr>, ["= 0.7"])
-      s.add_runtime_dependency(%q<notifiers>, ["= 1.1.0"])
+      s.add_runtime_dependency(%q<notifiers>, :git => "git@github.com:viniciuseduardo/notifiers.git")
       s.add_development_dependency(%q<rake>, ["= 0.8.7"])
       s.add_development_dependency(%q<jeweler>, ["= 1.6.2"])
       s.add_runtime_dependency(%q<watchr>, [">= 0.7"])
-      s.add_runtime_dependency(%q<notifiers>, [">= 1.1.0"])
+      s.add_runtime_dependency(%q<notifiers>, :git => "git@github.com:viniciuseduardo/notifiers.git")
       s.add_development_dependency(%q<rspec>, [">= 2.0.1"])
       s.add_development_dependency(%q<jeweler>, [">= 1.4.0"])
     else
       s.add_dependency(%q<watchr>, ["= 0.7"])
-      s.add_dependency(%q<notifiers>, ["= 1.1.0"])
+      s.add_dependency(%q<notifiers>, :git => "git@github.com:viniciuseduardo/notifiers.git")
       s.add_dependency(%q<rake>, ["= 0.8.7"])
       s.add_dependency(%q<jeweler>, ["= 1.6.2"])
       s.add_dependency(%q<watchr>, [">= 0.7"])
-      s.add_dependency(%q<notifiers>, [">= 1.1.0"])
+      s.add_dependency(%q<notifiers>, :git => "git@github.com:viniciuseduardo/notifiers.git")
       s.add_dependency(%q<rspec>, [">= 2.0.1"])
       s.add_dependency(%q<jeweler>, [">= 1.4.0"])
     end
   else
     s.add_dependency(%q<watchr>, ["= 0.7"])
-    s.add_dependency(%q<notifiers>, ["= 1.1.0"])
+    s.add_dependency(%q<notifiers>, :git => "git@github.com:viniciuseduardo/notifiers.git")
     s.add_dependency(%q<rake>, ["= 0.8.7"])
     s.add_dependency(%q<jeweler>, ["= 1.6.2"])
     s.add_dependency(%q<watchr>, [">= 0.7"])
-    s.add_dependency(%q<notifiers>, [">= 1.1.0"])
+    s.add_dependency(%q<notifiers>, :git => "git@github.com:viniciuseduardo/notifiers.git")
     s.add_dependency(%q<rspec>, [">= 2.0.1"])
     s.add_dependency(%q<jeweler>, [">= 1.4.0"])
   end
