@@ -150,8 +150,11 @@ module InfinityTest
       if notification_framework
         message = parse_results(options[:results])
         title = options[:ruby_version]
-        send(notification_framework).title(title).message(message).image(image_to_show).sound(sound_to_play).notify! if notification_framework == "growl"
-        send(notification_framework).title(title).message(message).image(image_to_show).notify! 
+        if notification_framework.to_s == "growl"
+          send(notification_framework).title(title).message(message).image(image_to_show).sound(sound_to_play).notify!
+        else
+          send(notification_framework).title(title).message(message).image(image_to_show).notify!
+        end 
       end
     end
 
