@@ -1,6 +1,6 @@
 module InfinityTest
   class Notification
-    attr_accessor :notifier, :action, :sucess_image, :failure_image, :pending_image
+    attr_accessor :notifier, :action, :sucess_image, :failure_image, :pending_image, :sucess_sound, :failure_sound, :pending_sound
     attr_reader :default_dir_images
     
     IMAGES_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'images'))
@@ -16,6 +16,7 @@ module InfinityTest
       @action = block
       @default_dir_images = File.join(IMAGES_DIR, 'simpson')
       search_all_images_and_set_the_instances!
+      search_all_sounds_and_set_the_instances!
       self.instance_eval(&block) if block_given?
     end
 
@@ -58,7 +59,14 @@ module InfinityTest
     # and return the first in the pattern
     #
     def search_image(file)
-      Dir.glob(File.join(@default_dir_images, file) + '*').first
+      Dir.glob(File.join(@default_dir_images, file) + '.{png,gif,jpg}').first
+    end
+
+    # Search the sucess, failure or pending sound in the default dir images
+    # and return the first in the pattern
+    #
+    def search_sound(file)
+      Dir.glob(File.join(@default_dir_images, file) + '.{mp3,wma,wav}').first
     end
     
     private
@@ -68,6 +76,12 @@ module InfinityTest
         @pending_image = options[:pending] || search_image(PENDING)
         @failure_image = options[:failure] || search_image(FAILURE)        
       end
+      
+      def search_all_sounds_and_set_the_instances!(options={})
+        @sucess_sound  = options[:sucess]  || search_sound(SUCESS)
+        @pending_sound = options[:pending] || search_sound(PENDING)
+        @failure_sound = options[:failure] || search_sound(FAILURE) 
+      end      
 
   end
 end

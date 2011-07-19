@@ -7,7 +7,10 @@ module InfinityTest
 
     def_delegator :@notification, :sucess_image, :sucess_image
     def_delegator :@notification, :pending_image, :pending_image
-    def_delegator :@notification, :failure_image, :failure_image    
+    def_delegator :@notification, :failure_image, :failure_image
+    def_delegator :@notification, :sucess_sound, :sucess_sound
+    def_delegator :@notification, :failure_sound, :failure_sound
+    def_delegator :@notification, :pending_sound, :pending_sound      
     def_delegator :@notification, :notifier, :notification_framework
 
     def_delegator :@setup, :test_framework, :test_framework

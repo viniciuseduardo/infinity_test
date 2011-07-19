@@ -175,6 +175,48 @@ module InfinityTest
       end
 
     end
+    
+    describe '#sound_to_play' do
+
+      before do
+        @application_with_rspec = application_with(:test_framework => :rspec)
+        @application_with_test_unit = application_with(:test_framework => :test_unit)
+      end
+
+      it "should return sucess when pass all the tests" do
+        test_should_not_fail!(@application_with_rspec)
+        test_should_not_pending!(@application_with_rspec)
+        @application_with_rspec.sound_to_play.should match /sucess/
+      end
+
+      it "should return failure when not pass all the tests" do
+        test_should_fail!(@application_with_rspec)
+        @application_with_rspec.sound_to_play.should match /failure/
+      end
+
+      it "should return pending when have pending tests" do
+        test_should_not_fail!(@application_with_rspec)
+        test_should_pending!(@application_with_rspec)
+        @application_with_rspec.sound_to_play.should match /pending/
+      end
+
+      def test_should_not_fail!(object)
+        object.test_framework.should_receive(:failure?).and_return(false)
+      end
+
+      def test_should_fail!(object)
+        object.test_framework.should_receive(:failure?).and_return(true)
+      end
+
+      def test_should_pending!(object)
+        object.test_framework.should_receive(:pending?).and_return(true)
+      end
+
+      def test_should_not_pending!(object)
+        object.test_framework.should_receive(:pending?).and_return(false)
+      end
+
+    end    
 
     describe '#notification_framework' do
 

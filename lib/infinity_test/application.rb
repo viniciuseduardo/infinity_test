@@ -11,6 +11,9 @@ module InfinityTest
     def_delegator :@config, :sucess_image, :sucess_image
     def_delegator :@config, :failure_image, :failure_image
     def_delegator :@config, :pending_image, :pending_image
+    def_delegator :@config, :sucess_sound, :sucess_sound
+    def_delegator :@config, :failure_sound, :failure_sound
+    def_delegator :@config, :pending_sound, :pending_sound    
     def_delegator :@config, :before_callback, :before_callback
     def_delegator :@config, :after_callback, :after_callback
     def_delegator :@config, :before_each_ruby_callback, :before_each_ruby_callback
@@ -147,7 +150,8 @@ module InfinityTest
       if notification_framework
         message = parse_results(options[:results])
         title = options[:ruby_version]
-        send(notification_framework).title(title).message(message).image(image_to_show).notify!
+        send(notification_framework).title(title).message(message).image(image_to_show).sound(sound_to_play).notify! if notification_framework == "growl"
+        send(notification_framework).title(title).message(message).image(image_to_show).notify! 
       end
     end
 
@@ -170,6 +174,20 @@ module InfinityTest
         pending_image
       else
         sucess_image
+      end
+    end
+
+    # If the test pass, play the sucess sound
+    # If is some pending test, play the pending sound
+    # If the test fails, play the failure sound
+    #
+    def sound_to_play
+      if test_framework.failure?
+        failure_sound
+      elsif test_framework.pending?
+        pending_sound
+      else
+        sucess_sound
       end
     end
 

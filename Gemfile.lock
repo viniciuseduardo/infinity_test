@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:viniciuseduardo/notifiers.git
+  revision: 3bc3024e2b87bb30ead39c755d0b69866359d268
+  specs:
+    notifiers (1.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -27,7 +33,6 @@ GEM
     json (1.4.6)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
-    notifiers (1.1.0)
     rake (0.8.7)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
@@ -60,7 +65,7 @@ DEPENDENCIES
   cucumber (= 0.9.0)
   fuubar (= 0.0.5)
   jeweler (= 1.6.2)
-  notifiers (= 1.1.0)
+  notifiers!
   rake (= 0.8.7)
   rspec (>= 2.6.0)
   ruby-debug19
